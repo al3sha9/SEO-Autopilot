@@ -9,11 +9,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
-import { HelpCircle, Copy, Download, Loader2, LogOut, ExternalLink, CheckCircle } from "lucide-react"
+import { HelpCircle, Copy, Download, Loader2, LogOut, ExternalLink, CheckCircle, Settings } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { removeAuthCookie } from "@/lib/auth"
 import { useRouter } from "next/navigation"
 import { createBlogPost } from "@/lib/blog"
+import Link from "next/link"
 
 interface SEOResults {
   keywords: string[]
@@ -31,7 +32,7 @@ function DashboardContent() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [results, setResults] = useState<SEOResults | null>(null)
   const [createdBlogPost, setCreatedBlogPost] = useState<{ slug: string; title: string } | null>(null)
-  const [useLangChain, setUseLangChain] = useState(false)
+  const [useLangChain, setUseLangChain] = useState(true)
   const router = useRouter()
 
   const handleLogout = () => {
@@ -138,6 +139,21 @@ function DashboardContent() {
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>How this works</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link href="/dashboard/all">
+                    <Button variant="ghost" size="icon">
+                      <Settings className="h-5 w-5" />
+                    </Button>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Manage all blogs</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>

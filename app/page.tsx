@@ -57,6 +57,9 @@ export default function BlogHomepage() {
             <Link href="/" className="text-foreground hover:text-muted-foreground transition-colors">
               Home
             </Link>
+            <Link href="/blogs" className="text-foreground hover:text-muted-foreground transition-colors">
+              Articles
+            </Link>
             <Link href="/about" className="text-foreground hover:text-muted-foreground transition-colors">
               About
             </Link>
@@ -85,6 +88,9 @@ export default function BlogHomepage() {
             <div className="container mx-auto px-4 py-4 space-y-4">
               <Link href="/" className="block text-foreground hover:text-muted-foreground transition-colors">
                 Home
+              </Link>
+              <Link href="/blogs" className="block text-foreground hover:text-muted-foreground transition-colors">
+                Articles
               </Link>
               <Link href="/about" className="block text-foreground hover:text-muted-foreground transition-colors">
                 About
@@ -116,10 +122,12 @@ export default function BlogHomepage() {
             Discover thoughtful perspectives on technology, design, business, and culture. Stories that matter, insights
             that inspire.
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            Explore Articles
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href="/blogs">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+              Explore Articles
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -128,10 +136,12 @@ export default function BlogHomepage() {
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center justify-between mb-12">
             <h3 className="text-3xl font-bold text-foreground">Featured Stories</h3>
-            <Button variant="outline">
-              View All
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/blogs">
+              <Button variant="outline">
+                View All
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
 
           {isLoading ? (
