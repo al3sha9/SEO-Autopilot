@@ -85,10 +85,11 @@
 
 ### **Database & Storage**
 - **Firebase Firestore** - NoSQL cloud database for scalable storage
-- **Firebase Admin SDK** - Server-side database operations
+- **Firebase Storage** - Cloud file storage for images and assets
+- **Firebase Admin SDK** - Server-side database and storage operations
 - **Dynamic API Routes** - RESTful endpoints
 - **Real-time Data Fetching** - Live content updates
-- **Production-Ready Storage** - No filesystem dependencies
+- **Production-Ready Storage** - Zero filesystem dependencies
 
 ## 📋 Prerequisites
 
@@ -119,7 +120,11 @@ pnpm install
 ### 3. **Firebase Setup**
 1. Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/)
 2. Enable **Firestore Database** in production mode
-3. Generate a **Service Account** key:
+3. Enable **Firebase Storage**:
+   - Go to Storage in the Firebase console
+   - Click "Get started" and choose production mode
+   - Select your preferred storage location
+4. Generate a **Service Account** key:
    - Go to Project Settings > Service Accounts
    - Click "Generate new private key"
    - Download the JSON file
@@ -142,6 +147,7 @@ FIREBASE_CLIENT_EMAIL=your_firebase_service_account_email
 NEXT_PUBLIC_FIREBASE_API_KEY=your_web_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_firebase_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
 ```
 
 > **⚠️ Important**: Replace all placeholder values with your actual Firebase and API credentials.
@@ -393,12 +399,14 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### **🔥 Recently Completed**
 - [x] **Firebase Firestore Integration** - Production-ready cloud database
+- [x] **Firebase Storage Integration** - Cloud-based image storage
 - [x] **Apple-Inspired UI Redesign** - Complete visual overhaul
-- [x] **Production Architecture** - Eliminated filesystem dependencies
+- [x] **Production Architecture** - Eliminated all filesystem dependencies
 - [x] **New Page Structure** - About, Categories, Contact pages
 - [x] **Mobile Navigation** - Responsive design across devices
 - [x] **EROFS Error Resolution** - No more deployment issues
 - [x] **Enhanced API Endpoints** - Firebase-powered backend
+- [x] **Image Management** - Automatic upload to Firebase Storage
 
 ## 🔮 Roadmap
 

@@ -6,8 +6,7 @@ import { z } from "zod"
 import googleTrends from 'google-trends-api'
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import fs from 'fs'
-import path from 'path'
+// Note: fs and path removed - using Firebase Storage instead
 
 // Define the LangChain tools
 const keywordResearchTool = tool(
@@ -158,20 +157,17 @@ const imageGenerationTool = tool(
         throw new Error(`Hugging Face API error: ${response.status}`)
       }
 
-      const imageBuffer = await response.arrayBuffer()
+      const imageBuffer = Buffer.from(await response.arrayBuffer())
       const slug = topic.toLowerCase().replace(/[^a-z0-9 -]/g, "").replace(/\s+/g, "-")
       const filename = `${slug}-${Date.now()}.jpg`
-      const imagePath = path.join(process.cwd(), 'public', 'generated-images', filename)
       
-      const imageDir = path.dirname(imagePath)
-      if (!fs.existsSync(imageDir)) {
-        fs.mkdirSync(imageDir, { recursive: true })
-      }
+      // Import Firebase storage helper (dynamic import to avoid issues)
+      const { FirebaseDB } = await import('./firebase')
       
-      fs.writeFileSync(imagePath, Buffer.from(imageBuffer))
-      const publicImagePath = `/generated-images/${filename}`
+      // Upload to Firebase Storage instead of local filesystem
+      const firebaseImageUrl = await FirebaseDB.uploadImage(imageBuffer, filename)
       
-      return `Image generated successfully: ${publicImagePath}`
+      return `Image generated successfully: ${firebaseImageUrl}`
       
     } catch (error) {
       return `Error generating image: ${error instanceof Error ? error.message : 'Unknown error'}`

@@ -1,5 +1,6 @@
 import { initializeApp, getApps, cert } from 'firebase-admin/app'
 import { getFirestore } from 'firebase-admin/firestore'
+import { getStorage } from 'firebase-admin/storage'
 
 // Initialize Firebase Admin (server-side)
 function initFirebaseAdmin() {
@@ -13,6 +14,7 @@ function initFirebaseAdmin() {
         privateKey: privateKey,
       }),
       projectId: process.env.FIREBASE_PROJECT_ID,
+      storageBucket: `${process.env.FIREBASE_PROJECT_ID}.appspot.com`,
     })
   }
   
@@ -24,6 +26,9 @@ const firebaseAdmin = initFirebaseAdmin()
 
 // Get Firestore instance
 export const db = getFirestore(firebaseAdmin)
+
+// Get Storage instance
+export const storage = getStorage(firebaseAdmin)
 
 // Database helper functions
 export class FirebaseDB {
@@ -168,6 +173,52 @@ export class FirebaseDB {
         recentPosts: 0,
         categories: []
       }
+    }
+  }
+
+  // Firebase Storage functions for images
+  static async uploadImage(imageBuffer: Buffer, filename: string): Promise<string> {
+    try {
+      const bucket = storage.bucket()
+      const file = bucket.file(`blog-images/${filename}`)
+      
+      // Upload the image buffer
+      await file.save(imageBuffer, {
+        metadata: {
+          contentType: 'image/png',
+          metadata: {
+            firebaseStorageDownloadTokens: Date.now().toString(),
+          }
+        },
+        public: true,
+      })
+
+      // Make the file publicly accessible
+      await file.makePublic()
+      
+      // Return the public URL
+      const publicUrl = `https://storage.googleapis.com/${bucket.name}/blog-images/${filename}`
+      console.log(`✅ Image uploaded to Firebase Storage: ${publicUrl}`)
+      return publicUrl
+      
+    } catch (error) {
+      console.error('Error uploading image to Firebase Storage:', error)
+      throw error
+    }
+  }
+
+  static async downloadImageFromUrl(imageUrl: string): Promise<Buffer> {
+    try {
+      const response = await fetch(imageUrl)
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${response.statusText}`)
+      }
+      
+      const arrayBuffer = await response.arrayBuffer()
+      return Buffer.from(arrayBuffer)
+    } catch (error) {
+      console.error('Error downloading image:', error)
+      throw error
     }
   }
 }
