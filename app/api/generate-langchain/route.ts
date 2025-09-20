@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSEOAgent } from '@/lib/langchain-agent'
-import { createBlogPost, saveSocialPosts } from '@/lib/blog'
+import { createBlogPost, saveSocialPosts } from '@/lib/blog-firebase'
 
 export async function POST(request: NextRequest) {
   try {
@@ -98,17 +98,23 @@ Make sure to use the actual tool outputs to inform each subsequent step.`
     console.log('🖼️ Final imageUrl being used:', imageUrl)
 
     // Save the blog post
-    const { slug, title } = createBlogPost(topic, content, keywords, imageUrl || undefined)
+    const blogPost = await createBlogPost(
+      topic, 
+      content, 
+      "Technology", // Default category, could be determined from keywords
+      keywords, 
+      imageUrl || undefined
+    )
 
     // Save social media posts
-    saveSocialPosts(slug, socialPosts)
+    await saveSocialPosts(blogPost.id, socialPosts.join('\n\n'))
 
-    console.log(`✅ LangChain content generation completed for: ${title}`)
+    console.log(`✅ LangChain content generation completed for: ${blogPost.title}`)
 
     return NextResponse.json({
       success: true,
-      slug,
-      title,
+      slug: blogPost.slug,
+      title: blogPost.title,
       keywords,
       competitors,
       competitorInsights,

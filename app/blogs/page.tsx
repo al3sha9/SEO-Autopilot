@@ -38,7 +38,8 @@ export default function BlogsPage() {
       const response = await fetch('/api/blogs')
       if (response.ok) {
         const data = await response.json()
-        setBlogs(data)
+        // Firebase API returns { posts: [] } format
+        setBlogs(data.posts || [])
       }
     } catch (error) {
       console.error('Error fetching blogs:', error)

@@ -24,8 +24,9 @@ export default function BlogHomepage() {
       try {
         const response = await fetch('/api/blogs')
         if (response.ok) {
-          const posts = await response.json()
-          setBlogPosts(posts)
+          const data = await response.json()
+          // Firebase API returns { posts: [] } format
+          setBlogPosts(data.posts || [])
         }
       } catch (error) {
         console.error('Error fetching blog posts:', error)

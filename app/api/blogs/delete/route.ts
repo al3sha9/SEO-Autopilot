@@ -1,26 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
-import { getAllBlogPosts } from '@/lib/blog'
+import { deleteBlogPost, getAllBlogPosts } from '@/lib/blog-firebase'
 
 export async function DELETE(request: NextRequest) {
   try {
-    const { id, slug } = await request.json()
+    const { id } = await request.json()
 
-    if (!id || !slug) {
+    if (!id) {
       return NextResponse.json(
-        { error: 'Blog ID and slug are required' },
+        { error: 'Blog ID is required' },
         { status: 400 }
       )
     }
 
-    // Read current blogs
-    const blogsJsonPath = path.join(process.cwd(), 'data', 'blogs.json')
-    const postsDir = path.join(process.cwd(), 'posts')
-    const socialPostsDir = path.join(process.cwd(), 'public', 'social_posts')
-
-    // Remove from blogs.json
-    const allBlogs = getAllBlogPosts()
+    // Check if blog exists
+    const allBlogs = await getAllBlogPosts()
     const blogToDelete = allBlogs.find(blog => blog.id === id)
     
     if (!blogToDelete) {
@@ -30,19 +23,14 @@ export async function DELETE(request: NextRequest) {
       )
     }
 
-    const updatedBlogs = allBlogs.filter(blog => blog.id !== id)
-    fs.writeFileSync(blogsJsonPath, JSON.stringify(updatedBlogs, null, 2))
-
-    // Remove MDX file
-    const mdxPath = path.join(postsDir, `${slug}.mdx`)
-    if (fs.existsSync(mdxPath)) {
-      fs.unlinkSync(mdxPath)
-    }
-
-    // Remove social posts file
-    const socialPostsPath = path.join(socialPostsDir, `${slug}.txt`)
-    if (fs.existsSync(socialPostsPath)) {
-      fs.unlinkSync(socialPostsPath)
+    // Delete from Firebase
+    const success = await deleteBlogPost(id)
+    
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Failed to delete blog post from database' },
+        { status: 500 }
+      )
     }
 
     console.log(`✅ Deleted blog post: ${blogToDelete.title} (${id})`)
