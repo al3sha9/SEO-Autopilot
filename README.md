@@ -408,7 +408,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [x] **Enhanced API Endpoints** - Firebase-powered backend
 - [x] **Image Management** - Automatic upload to Firebase Storage
 
-## 🔮 Roadmap
+<!-- ## 🔮 Roadmap
 
 ### **v2.1 (Next Release)**
 - [ ] **Firebase Storage Integration** - Store generated images permanently
@@ -427,7 +427,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [ ] **Video Content Generation** - AI-powered video scripts
 - [ ] **Podcast Episode Creation** - Audio content generation
 - [ ] **Email Campaign Builder** - Newsletter automation
-- [ ] **Social Media Scheduler** - Automated posting across platforms
+- [ ] **Social Media Scheduler** - Automated posting across platforms -->
 
 ---
 
