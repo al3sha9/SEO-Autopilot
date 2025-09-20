@@ -49,99 +49,146 @@ export default function BlogHomepage() {
   const recentPosts = blogPosts.slice(3, 6)
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-foreground">BlogBot</h1>
+      <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-xl border-b border-gray-200/50">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center">
+            <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">BlogBot</h1>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-foreground hover:text-muted-foreground transition-colors">
+          <div className="hidden md:flex items-center space-x-1">
+            <Link href="/" className="px-4 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
               Home
             </Link>
-            <Link href="/blogs" className="text-foreground hover:text-muted-foreground transition-colors">
+            <Link href="/blogs" className="px-4 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
               Articles
             </Link>
-            <Link href="/about" className="text-foreground hover:text-muted-foreground transition-colors">
+            <Link href="/about" className="px-4 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
               About
             </Link>
-            <Link href="/categories" className="text-foreground hover:text-muted-foreground transition-colors">
+            <Link href="/categories" className="px-4 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
               Categories
             </Link>
-            <Link href="/contact" className="text-foreground hover:text-muted-foreground transition-colors">
+            <Link href="/contact" className="px-4 py-2 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
               Contact
             </Link>
-            <Link href="/dashboard">
-              <Button variant="outline" size="sm">
+            <Link href="/dashboard" className="ml-4">
+              <Button className="bg-black text-white hover:bg-gray-800 px-6 py-2 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105">
                 Dashboard
               </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <Button variant="ghost" size="icon" className="md:hidden p-2 rounded-lg hover:bg-gray-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X className="h-5 w-5 text-gray-700" /> : <Menu className="h-5 w-5 text-gray-700" />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-border bg-background">
-            <div className="container mx-auto px-4 py-4 space-y-4">
-              <Link href="/" className="block text-foreground hover:text-muted-foreground transition-colors">
+          <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/50 shadow-lg">
+            <div className="max-w-7xl mx-auto px-6 py-6 space-y-2">
+              <Link href="/" className="block px-4 py-3 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
                 Home
               </Link>
-              <Link href="/blogs" className="block text-foreground hover:text-muted-foreground transition-colors">
+              <Link href="/blogs" className="block px-4 py-3 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
                 Articles
               </Link>
-              <Link href="/about" className="block text-foreground hover:text-muted-foreground transition-colors">
+              <Link href="/about" className="block px-4 py-3 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
                 About
               </Link>
-              <Link href="/categories" className="block text-foreground hover:text-muted-foreground transition-colors">
+              <Link href="/categories" className="block px-4 py-3 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
                 Categories
               </Link>
-              <Link href="/contact" className="block text-foreground hover:text-muted-foreground transition-colors">
+              <Link href="/contact" className="block px-4 py-3 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-gray-50">
                 Contact
               </Link>
-              <Link href="/dashboard" className="block">
-                <Button variant="outline" size="sm" className="w-full bg-transparent">
-                  Dashboard
-                </Button>
-              </Link>
+              <div className="pt-4 border-t border-gray-200">
+                <Link href="/dashboard" className="block">
+                  <Button className="w-full bg-black text-white hover:bg-gray-800 py-3 text-sm font-medium rounded-full transition-all duration-200">
+                    Dashboard
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section className="relative py-24 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6 text-balance">
-            AI-Powered Content
-            <span className="block">for the Modern Web</span>
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto leading-relaxed">
-            Generate SEO-optimized blog posts instantly with AI. From keyword research to content creation, BlogBot handles it all.
-          </p>
-          <Link href="/blogs">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              Explore Articles
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
+      <section className="relative py-32 px-6 overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-6xl md:text-7xl font-semibold text-gray-900 mb-8 leading-tight tracking-tight">
+              AI-Powered Content
+              <span className="block text-gray-700">for the Modern Web</span>
+            </h2>
+            <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
+              Generate SEO-optimized blog posts instantly with AI. From keyword research to content creation, BlogBot handles it all.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/blogs">
+                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-4 text-lg font-medium rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                  Explore Articles
+                  <ArrowRight className="ml-3 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/dashboard">
+                <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-4 text-lg font-medium rounded-full transition-all duration-300 hover:scale-105">
+                  Get Started
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Feature Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+            <div className="text-center p-8 rounded-2xl bg-gray-50/50 backdrop-blur-sm border border-gray-200/50 hover:bg-gray-50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Lightning Fast</h3>
+              <p className="text-gray-600 leading-relaxed">Generate comprehensive blog posts in seconds with advanced AI technology.</p>
+            </div>
+            
+            <div className="text-center p-8 rounded-2xl bg-gray-50/50 backdrop-blur-sm border border-gray-200/50 hover:bg-gray-50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012-2m-2 6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">SEO Optimized</h3>
+              <p className="text-gray-600 leading-relaxed">Built-in keyword research and optimization ensures maximum visibility.</p>
+            </div>
+            
+            <div className="text-center p-8 rounded-2xl bg-gray-50/50 backdrop-blur-sm border border-gray-200/50 hover:bg-gray-50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Smart Content</h3>
+              <p className="text-gray-600 leading-relaxed">AI-powered research and competitor analysis for engaging content.</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Featured Posts */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-between mb-12">
-            <h3 className="text-3xl font-bold text-foreground">Featured Stories</h3>
+      <section className="py-24 px-6 bg-gray-50/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-16">
+            <div>
+              <h3 className="text-4xl font-semibold text-gray-900 mb-4 tracking-tight">Featured Stories</h3>
+              <p className="text-lg text-gray-600">Discover our latest AI-generated insights and trends</p>
+            </div>
             <Link href="/blogs">
-              <Button variant="outline">
+              <Button className="bg-black text-white hover:bg-gray-800 px-6 py-3 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 shadow-lg">
                 View All
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -151,55 +198,55 @@ export default function BlogHomepage() {
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
-                <Card key={i} className="border-border">
-                  <div className="aspect-[4/3] bg-muted animate-pulse rounded-t-lg"></div>
-                  <CardContent className="p-6">
-                    <div className="h-4 bg-muted animate-pulse rounded mb-3"></div>
-                    <div className="h-6 bg-muted animate-pulse rounded mb-3"></div>
-                    <div className="h-16 bg-muted animate-pulse rounded mb-4"></div>
-                    <div className="h-4 bg-muted animate-pulse rounded w-20"></div>
-                  </CardContent>
-                </Card>
+                <div key={i} className="bg-white rounded-3xl border border-gray-200/50 overflow-hidden shadow-sm">
+                  <div className="aspect-[4/3] bg-gray-100 animate-pulse"></div>
+                  <div className="p-8">
+                    <div className="h-4 bg-gray-100 animate-pulse rounded-full mb-4 w-20"></div>
+                    <div className="h-6 bg-gray-100 animate-pulse rounded-full mb-4"></div>
+                    <div className="h-16 bg-gray-100 animate-pulse rounded-xl mb-6"></div>
+                    <div className="h-4 bg-gray-100 animate-pulse rounded-full w-24"></div>
+                  </div>
+                </div>
               ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredPosts.map((post) => (
               <Link key={post.id} href={`/blog/${post.slug}`}>
-                <Card className="group cursor-pointer border-border hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                <div className="group cursor-pointer bg-white rounded-3xl border border-gray-200/50 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:scale-[1.02] hover:border-gray-300/50">
+                  <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={post.image || "/placeholder.svg?height=300&width=400"}
                       alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4 mb-3">
-                      <Badge variant="secondary" className="text-xs">
+                  <div className="p-8">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
                         {post.category}
-                      </Badge>
-                      <div className="flex items-center text-xs text-muted-foreground">
+                      </span>
+                      <div className="flex items-center text-xs text-gray-500">
                         <Calendar className="w-3 h-3 mr-1" />
                         {formatDate(post.publishedAt)}
                       </div>
                     </div>
-                    <h4 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors text-balance">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-gray-700 transition-colors leading-tight">
                       {post.title}
                     </h4>
-                    <p className="text-muted-foreground mb-4 leading-relaxed text-pretty">{post.excerpt}</p>
+                    <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">{post.excerpt}</p>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center text-xs text-muted-foreground">
+                      <div className="flex items-center text-xs text-gray-500">
                         <Clock className="w-3 h-3 mr-1" />
                         {post.readTime}
                       </div>
-                      <Button variant="ghost" size="sm" className="group-hover:text-primary">
+                      <div className="text-sm font-medium text-gray-900 group-hover:text-gray-700 transition-colors flex items-center">
                         Read More
-                        <ArrowRight className="ml-1 h-3 w-3" />
-                      </Button>
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </Link>
             ))}
             </div>
@@ -209,11 +256,14 @@ export default function BlogHomepage() {
 
       {/* Recent Posts */}
       {recentPosts.length > 0 && (
-        <section className="py-16 px-4 bg-muted/30">
-          <div className="container mx-auto max-w-6xl">
-            <div className="flex items-center justify-between mb-12">
-              <h3 className="text-3xl font-bold text-foreground">Recent Articles</h3>
-              <Button variant="outline">
+        <section className="py-24 px-6 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-between mb-16">
+              <div>
+                <h3 className="text-4xl font-semibold text-gray-900 mb-4 tracking-tight">Recent Articles</h3>
+                <p className="text-lg text-gray-600">Stay up to date with our latest insights</p>
+              </div>
+              <Button className="bg-black text-white hover:bg-gray-800 px-6 py-3 text-sm font-medium rounded-full transition-all duration-200 hover:scale-105 shadow-lg">
                 View All
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -222,40 +272,40 @@ export default function BlogHomepage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {recentPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug}`}>
-                  <Card className="group cursor-pointer border-border hover:shadow-lg transition-all duration-300">
-                    <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                  <div className="group cursor-pointer bg-white rounded-3xl border border-gray-200/50 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:scale-[1.02] hover:border-gray-300/50">
+                    <div className="aspect-[4/3] overflow-hidden">
                       <img
                         src={post.image || "/placeholder.svg?height=300&width=400"}
                         alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     </div>
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-4 mb-3">
-                        <Badge variant="secondary" className="text-xs">
+                    <div className="p-8">
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
                           {post.category}
-                        </Badge>
-                        <div className="flex items-center text-xs text-muted-foreground">
+                        </span>
+                        <div className="flex items-center text-xs text-gray-500">
                           <Calendar className="w-3 h-3 mr-1" />
                           {formatDate(post.publishedAt)}
                         </div>
                       </div>
-                      <h4 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors text-balance">
+                      <h4 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-gray-700 transition-colors leading-tight">
                         {post.title}
                       </h4>
-                      <p className="text-muted-foreground mb-4 leading-relaxed text-pretty">{post.excerpt}</p>
+                      <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3">{post.excerpt}</p>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center text-xs text-muted-foreground">
+                        <div className="flex items-center text-xs text-gray-500">
                           <Clock className="w-3 h-3 mr-1" />
                           {post.readTime}
                         </div>
-                        <Button variant="ghost" size="sm" className="group-hover:text-primary">
+                        <div className="text-sm font-medium text-gray-900 group-hover:text-gray-700 transition-colors flex items-center">
                           Read More
-                          <ArrowRight className="ml-1 h-3 w-3" />
-                        </Button>
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -264,86 +314,88 @@ export default function BlogHomepage() {
       )}
 
       {/* Newsletter Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h3 className="text-3xl font-bold text-foreground mb-4">Stay Updated</h3>
-          <p className="text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto leading-relaxed">
+      <section className="py-24 px-6 bg-gray-50/50">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-4xl font-semibold text-gray-900 mb-6 tracking-tight">Stay Updated</h3>
+          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
             Get notified when new AI-generated content is published. Quality articles created by BlogBot.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto bg-white p-2 rounded-2xl shadow-lg border border-gray-200/50">
             <input
               type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring bg-background text-foreground"
+              placeholder="Enter your email address"
+              className="flex-1 px-6 py-4 bg-transparent border-none outline-none text-gray-900 placeholder-gray-500 text-lg"
             />
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8">Subscribe</Button>
+            <Button className="bg-black text-white hover:bg-gray-800 px-8 py-4 text-lg font-medium rounded-xl transition-all duration-200 hover:scale-105 shadow-md">
+              Subscribe
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-12 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <footer className="border-t border-gray-200/50 py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="md:col-span-2">
-              <h4 className="text-2xl font-bold text-foreground mb-4">BlogBot</h4>
-              <p className="text-muted-foreground leading-relaxed">
+              <h4 className="text-2xl font-semibold text-gray-900 mb-6">BlogBot</h4>
+              <p className="text-gray-600 leading-relaxed text-lg max-w-md">
                 AI-powered SEO content generator that creates optimized blog posts, conducts keyword research, and generates social media content automatically.
               </p>
             </div>
             <div>
-              <h5 className="font-semibold text-foreground mb-4">Categories</h5>
-              <ul className="space-y-2 text-muted-foreground">
+              <h5 className="font-semibold text-gray-900 mb-6">Categories</h5>
+              <ul className="space-y-4 text-gray-600">
                 <li>
-                  <Link href="/category/technology" className="hover:text-foreground transition-colors">
+                  <Link href="/category/technology" className="hover:text-gray-900 transition-colors text-lg">
                     Technology
                   </Link>
                 </li>
                 <li>
-                  <Link href="/category/design" className="hover:text-foreground transition-colors">
+                  <Link href="/category/design" className="hover:text-gray-900 transition-colors text-lg">
                     Design
                   </Link>
                 </li>
                 <li>
-                  <Link href="/category/business" className="hover:text-foreground transition-colors">
+                  <Link href="/category/business" className="hover:text-gray-900 transition-colors text-lg">
                     Business
                   </Link>
                 </li>
                 <li>
-                  <Link href="/category/culture" className="hover:text-foreground transition-colors">
+                  <Link href="/category/culture" className="hover:text-gray-900 transition-colors text-lg">
                     Culture
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h5 className="font-semibold text-foreground mb-4">Connect</h5>
-              <ul className="space-y-2 text-muted-foreground">
+              <h5 className="font-semibold text-gray-900 mb-6">Connect</h5>
+              <ul className="space-y-4 text-gray-600">
                 <li>
-                  <Link href="/about" className="hover:text-foreground transition-colors">
+                  <Link href="/about" className="hover:text-gray-900 transition-colors text-lg">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-foreground transition-colors">
+                  <Link href="/contact" className="hover:text-gray-900 transition-colors text-lg">
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="hover:text-foreground transition-colors">
+                  <Link href="/privacy" className="hover:text-gray-900 transition-colors text-lg">
                     Privacy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="hover:text-foreground transition-colors">
+                  <Link href="/terms" className="hover:text-gray-900 transition-colors text-lg">
                     Terms
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 BlogBot. All rights reserved.</p>
+          <div className="border-t border-gray-200/50 mt-16 pt-8 text-center">
+            <p className="text-gray-500 text-lg">&copy; 2024 BlogBot. All rights reserved.</p>
           </div>
         </div>
       </footer>
