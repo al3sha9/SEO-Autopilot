@@ -2,6 +2,7 @@
 
 import { AuthGuard } from "@/components/auth-guard"
 import { useState } from "react"
+import React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -34,6 +35,11 @@ function DashboardContent() {
   const [createdBlogPost, setCreatedBlogPost] = useState<{ slug: string; title: string } | null>(null)
   const [useLangChain, setUseLangChain] = useState(true)
   const router = useRouter()
+
+  // Set page title
+  React.useEffect(() => {
+    document.title = "Dashboard | BlogBot"
+  }, [])
 
   const handleLogout = () => {
     removeAuthCookie()
@@ -124,9 +130,9 @@ function DashboardContent() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">S</span>
+              <span className="text-primary-foreground font-bold text-sm">B</span>
             </div>
-            <h1 className="text-xl font-semibold text-foreground">SEO Agent</h1>
+            <h1 className="text-xl font-semibold text-foreground">BlogBot</h1>
           </div>
 
           <div className="flex items-center gap-2">

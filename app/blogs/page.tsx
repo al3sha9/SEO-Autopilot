@@ -28,6 +28,11 @@ export default function BlogsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All")
   const router = useRouter()
 
+  // Set page title
+  useEffect(() => {
+    document.title = "All Articles | BlogBot"
+  }, [])
+
   const fetchBlogs = async () => {
     try {
       const response = await fetch('/api/blogs')

@@ -14,6 +14,11 @@ export default function BlogHomepage() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Set page title
+    document.title = "BlogBot - AI-Powered SEO Content Generator"
+  }, [])
+
+  useEffect(() => {
     // Load blog posts from API
     const fetchBlogPosts = async () => {
       try {
@@ -49,7 +54,7 @@ export default function BlogHomepage() {
       <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-foreground">Insights</h1>
+            <h1 className="text-2xl font-bold text-foreground">BlogBot</h1>
           </div>
 
           {/* Desktop Navigation */}
@@ -115,12 +120,11 @@ export default function BlogHomepage() {
       <section className="relative py-24 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6 text-balance">
-            Insights for the
-            <span className="block">Modern World</span>
+            AI-Powered Content
+            <span className="block">for the Modern Web</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto leading-relaxed">
-            Discover thoughtful perspectives on technology, design, business, and culture. Stories that matter, insights
-            that inspire.
+            Generate SEO-optimized blog posts instantly with AI. From keyword research to content creation, BlogBot handles it all.
           </p>
           <Link href="/blogs">
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
@@ -264,7 +268,7 @@ export default function BlogHomepage() {
         <div className="container mx-auto max-w-4xl text-center">
           <h3 className="text-3xl font-bold text-foreground mb-4">Stay Updated</h3>
           <p className="text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto leading-relaxed">
-            Get the latest insights delivered straight to your inbox. No spam, just quality content.
+            Get notified when new AI-generated content is published. Quality articles created by BlogBot.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
@@ -282,10 +286,9 @@ export default function BlogHomepage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <h4 className="text-2xl font-bold text-foreground mb-4">Insights</h4>
+              <h4 className="text-2xl font-bold text-foreground mb-4">BlogBot</h4>
               <p className="text-muted-foreground leading-relaxed">
-                A modern blog focused on technology, design, business, and culture. Sharing insights that matter and
-                stories that inspire.
+                AI-powered SEO content generator that creates optimized blog posts, conducts keyword research, and generates social media content automatically.
               </p>
             </div>
             <div>
@@ -340,7 +343,7 @@ export default function BlogHomepage() {
             </div>
           </div>
           <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 Insights. All rights reserved.</p>
+            <p>&copy; 2024 BlogBot. All rights reserved.</p>
           </div>
         </div>
       </footer>

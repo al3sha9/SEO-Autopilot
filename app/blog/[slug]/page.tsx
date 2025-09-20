@@ -41,6 +41,13 @@ export default function BlogPostPage() {
     }
   }, [params.slug])
 
+  // Update document title when post loads
+  useEffect(() => {
+    if (post?.title) {
+      document.title = `${post.title} | BlogBot`
+    }
+  }, [post?.title])
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background">
@@ -90,7 +97,7 @@ export default function BlogPostPage() {
       <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-foreground">Insights</h1>
+            <h1 className="text-2xl font-bold text-foreground">BlogBot</h1>
           </Link>
           <Link href="/dashboard">
             <Button variant="outline" size="sm">

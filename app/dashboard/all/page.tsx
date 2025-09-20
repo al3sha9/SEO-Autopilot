@@ -39,6 +39,11 @@ function AdminAllBlogs() {
   const [deletingId, setDeletingId] = useState<string | null>(null)
   const router = useRouter()
 
+  // Set page title
+  useEffect(() => {
+    document.title = "Manage All Blogs | BlogBot"
+  }, [])
+
   const handleLogout = () => {
     removeAuthCookie()
     router.push("/")
