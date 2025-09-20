@@ -1,0 +1,170 @@
+[
+  {
+    "id": "1758354364867",
+    "title": "Generative ai",
+    "excerpt": "# Generative ai: A Complete Beginner's Guide\n\n## Getting Started\n\nWelcome to the world of Generative ai! Whether you're new to what is generative ai or looking to improve your existing knowledge, this...",
+    "slug": "generative-ai",
+    "category": "General",
+    "readTime": "5 min read",
+    "publishedAt": "2025-09-20",
+    "keywords": [
+      "what is generative ai",
+      "what is ai",
+      "ai vs generative ai",
+      "generative ai tools",
+      "generative ai services",
+      "mit 95% of generative ai pilots at companies are failing",
+      "mit generative ai",
+      "generative ai examples"
+    ]
+  },
+  {
+    "id": "1758353877430",
+    "title": "RAG",
+    "excerpt": "# The Ultimate Guide to RAG\n\n## Introduction\n\nIn today's digital landscape, understanding RAG has become more crucial than ever. This comprehensive guide will walk you through everything you need to k...",
+    "slug": "rag",
+    "category": "General",
+    "readTime": "5 min read",
+    "publishedAt": "2025-09-20",
+    "keywords": [
+      "rag bone",
+      "rag and bone",
+      "what is rag",
+      "rag ai",
+      "do rag",
+      "rag trader nyc",
+      "rag and bone loafers",
+      "rag weed",
+      "what does rag weed look like",
+      "rag and bone miramar jeans"
+    ]
+  },
+  {
+    "id": "1758353430743",
+    "title": "agentic ai",
+    "excerpt": "# The Ultimate Guide to agentic ai\n\n## Introduction\n\nIn today's digital landscape, understanding agentic ai has become more crucial than ever. This comprehensive guide will walk you through everything...",
+    "slug": "agentic-ai",
+    "category": "General",
+    "readTime": "5 min read",
+    "publishedAt": "2025-09-20",
+    "keywords": [
+      "trending",
+      "popular",
+      "guide",
+      "tips",
+      "best practices"
+    ]
+  },
+  {
+    "id": "1758353389813",
+    "title": "Climate Change",
+    "excerpt": "# The Ultimate Guide to Climate Change\n\n## Introduction\n\nIn today's digital landscape, understanding Climate Change has become more crucial than ever. This comprehensive guide will walk you through ev...",
+    "slug": "climate-change",
+    "category": "General",
+    "readTime": "5 min read",
+    "publishedAt": "2025-09-20",
+    "keywords": [
+      "trending",
+      "popular",
+      "guide",
+      "tips",
+      "best practices"
+    ]
+  },
+  {
+    "id": "1",
+    "title": "The Future of Sustainable Fashion: A Complete Guide",
+    "slug": "future-sustainable-fashion-guide",
+    "excerpt": "Sustainable fashion has evolved from a niche movement to a mainstream necessity. Discover how to build an eco-friendly wardrobe that doesn't compromise on style.",
+    "category": "Fashion",
+    "readTime": "8 min read",
+    "publishedAt": "2024-01-15",
+    "keywords": [
+      "sustainable fashion",
+      "eco-friendly",
+      "ethical clothing",
+      "green fashion"
+    ],
+    "image": "/sustainable-fashion-eco-friendly-clothing.jpg"
+  },
+  {
+    "id": "2",
+    "title": "SEO Marketing: Digital Strategy That Actually Works",
+    "slug": "seo-marketing-digital-strategy",
+    "excerpt": "Learn proven SEO strategies that drive real results. From keyword research to content optimization, master the fundamentals of search engine marketing.",
+    "category": "Marketing",
+    "readTime": "6 min read",
+    "publishedAt": "2024-01-10",
+    "keywords": [
+      "seo",
+      "digital marketing",
+      "search engine optimization",
+      "content strategy"
+    ],
+    "image": "/seo-marketing-digital-strategy.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Remote Work: Building Effective Collaboration",
+    "slug": "remote-work-collaboration",
+    "excerpt": "Remote work is here to stay. Discover the tools, strategies, and mindset shifts needed to build high-performing distributed teams.",
+    "category": "Business",
+    "readTime": "7 min read",
+    "publishedAt": "2024-01-05",
+    "keywords": [
+      "remote work",
+      "collaboration",
+      "distributed teams",
+      "productivity"
+    ],
+    "image": "/remote-work-collaboration.png"
+  },
+  {
+    "id": "4",
+    "title": "Color Psychology in Web Design: A Designer's Guide",
+    "slug": "color-psychology-web-design",
+    "excerpt": "Colors influence emotions and behaviors. Learn how to use color psychology to create more effective and engaging web designs that convert.",
+    "category": "Design",
+    "readTime": "5 min read",
+    "publishedAt": "2024-01-01",
+    "keywords": [
+      "color psychology",
+      "web design",
+      "ui design",
+      "user experience"
+    ],
+    "image": "/color-psychology-web-design.png"
+  },
+  {
+    "id": "5",
+    "title": "TypeScript for Modern Development: Best Practices",
+    "slug": "typescript-programming-code",
+    "excerpt": "TypeScript has become essential for large-scale JavaScript development. Master the patterns and practices that make your code more reliable.",
+    "category": "Development",
+    "readTime": "9 min read",
+    "publishedAt": "2023-12-28",
+    "keywords": [
+      "typescript",
+      "javascript",
+      "programming",
+      "software development"
+    ],
+    "image": "/typescript-programming-code.jpg"
+  },
+  {
+    "id": "6",
+    "title": "Minimalist Product Design: The Art of Clean Aesthetics",
+    "slug": "minimalist-product-design-clean",
+    "excerpt": "Less is more in product design. Explore the principles of minimalism and how to create products that are both beautiful and functional.",
+    "category": "Design",
+    "readTime": "4 min read",
+    "publishedAt": "2023-12-25",
+    "keywords": [
+      "minimalist design",
+      "product design",
+      "clean aesthetics",
+      "user interface"
+    ],
+    "image": "/minimalist-product-design-clean.jpg"
+  }
+]
