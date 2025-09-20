@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
+import { Switch } from "@/components/ui/switch"
 import { HelpCircle, Copy, Download, Loader2, LogOut, ExternalLink, CheckCircle } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { removeAuthCookie } from "@/lib/auth"
@@ -30,6 +31,7 @@ function DashboardContent() {
   const [isGenerating, setIsGenerating] = useState(false)
   const [results, setResults] = useState<SEOResults | null>(null)
   const [createdBlogPost, setCreatedBlogPost] = useState<{ slug: string; title: string } | null>(null)
+  const [useLangChain, setUseLangChain] = useState(false)
   const router = useRouter()
 
   const handleLogout = () => {
@@ -45,7 +47,8 @@ function DashboardContent() {
     setResults(null) // Reset previous results
 
     try {
-      const response = await fetch('/api/generate', {
+      const endpoint = useLangChain ? '/api/generate-langchain' : '/api/generate'
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -157,6 +160,28 @@ function DashboardContent() {
           </p>
 
           <div className="max-w-md mx-auto space-y-4">
+            <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+              <div className="space-y-1">
+                <Label className="text-sm font-medium">Agent Type</Label>
+                <p className="text-xs text-muted-foreground">
+                  {useLangChain 
+                    ? 'LangChain orchestration with Gemini AI reasoning' 
+                    : 'Direct API integrations with parallel execution'
+                  }
+                </p>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Label htmlFor="agent-toggle" className="text-sm">
+                  {useLangChain ? 'LangChain' : 'Custom'}
+                </Label>
+                <Switch
+                  id="agent-toggle"
+                  checked={useLangChain}
+                  onCheckedChange={setUseLangChain}
+                />
+              </div>
+            </div>
+            
             <div className="space-y-2">
               <Label htmlFor="topic" className="text-left block">
                 Topic
@@ -180,10 +205,10 @@ function DashboardContent() {
               {isGenerating ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Generating...
+                  {useLangChain ? 'Running LangChain Agent...' : 'Running Custom Agent...'}
                 </>
               ) : (
-                "Run Agent"
+                `Run ${useLangChain ? 'LangChain' : 'Custom'} Agent`
               )}
             </Button>
           </div>
