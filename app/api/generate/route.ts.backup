@@ -1,4 +1,3 @@
-import { uploadImageToUploadThing } from "@/lib/uploadthing-utils"
 import { NextRequest, NextResponse } from 'next/server'
 import { createBlogPost, saveSocialPosts } from '@/lib/blog'
 // @ts-ignore - no types available for google-trends-api
@@ -364,12 +363,22 @@ async function generateBlogImage(topic: string, keywords: string[]): Promise<str
     
     // Generate filename based on topic slug
     const slug = topic.toLowerCase().replace(/[^a-z0-9 -]/g, "").replace(/\s+/g, "-")
-    // Upload to UploadThing instead of local storage
-    const imageUrl = await uploadImageToUploadThing(Buffer.from(imageBuffer), filename)
+    const filename = `${slug}-${Date.now()}.jpg`
+    const imagePath = path.join(process.cwd(), 'public', 'generated-images', filename)
     
-    console.log(`✅ Image generated and uploaded: ${imageUrl}`)
+    // Ensure directory exists
+    const imageDir = path.dirname(imagePath)
+    if (!fs.existsSync(imageDir)) {
+      fs.mkdirSync(imageDir, { recursive: true })
+    }
     
-    return imageUrl
+    // Save image to public directory
+    fs.writeFileSync(imagePath, Buffer.from(imageBuffer))
+    
+    const publicImagePath = `/generated-images/${filename}`
+    console.log(`✅ Image generated and saved: ${publicImagePath}`)
+    
+    return publicImagePath
     
   } catch (error) {
     console.warn('⚠️ Image generation failed:', error instanceof Error ? error.message : 'Unknown error')

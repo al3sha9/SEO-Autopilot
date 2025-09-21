@@ -183,11 +183,6 @@ function parseImageUrlFromToolOutput(toolOutput: string): string | null {
   
   for (const pattern of patterns) {
     const match = toolOutput.match(pattern)
-      // Check if the URL is an HTTPS URL (UploadThing)
-      if (imageUrl.startsWith('https://')) {
-        console.log('🖼️ Found UploadThing URL in tool output:', imageUrl)
-        return imageUrl
-      }
     if (match) {
       let imageUrl = match[1] || match[0]
       // Ensure it starts with /

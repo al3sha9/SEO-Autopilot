@@ -161,13 +161,13 @@ const imageGenerationTool = tool(
       const slug = topic.toLowerCase().replace(/[^a-z0-9 -]/g, "").replace(/\s+/g, "-")
       const filename = `${slug}-${Date.now()}.jpg`
       
-      // Import Firebase storage helper (dynamic import to avoid issues)
-      const { FirebaseDB } = await import('./firebase')
+      // Import UploadThing helper (dynamic import to avoid issues)
+      const { uploadImageToUploadThing } = await import("./uploadthing-utils")
       
-      // Upload to Firebase Storage instead of local filesystem
-      const firebaseImageUrl = await FirebaseDB.uploadImage(imageBuffer, filename)
+      // Upload to UploadThing instead of Firebase Storage
+      const uploadThingImageUrl = await uploadImageToUploadThing(imageBuffer, filename)
       
-      return `Image generated successfully: ${firebaseImageUrl}`
+      return `Image generated successfully: ${uploadThingImageUrl}`
       
     } catch (error) {
       return `Error generating image: ${error instanceof Error ? error.message : 'Unknown error'}`
